@@ -31,6 +31,7 @@ int main(int argc, char *argv[])
         }
         fileptr = fmemopen((void *)output.c_str(), output.size(), "r");
         tree = parser(fileptr);
+        checkSemantics(tree);
     }
     else if (argc == 2)
     {

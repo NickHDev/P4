@@ -49,7 +49,11 @@ node_t *S(token_t tk, std::FILE *input)
 node_t *A(token_t tk, std::FILE *input)
 {
     node_t *nodeA = new node_t;
-    char currentChar = tk.name.back();
+    char currentChar = '\0';
+    if (!tk.name.empty())
+    {
+        currentChar = tk.name[tk.name.size() - 1];
+    }
     if (currentChar != '(')
     {
         if (currentChar == '"')
@@ -108,7 +112,11 @@ node_t *B(token_t tk, std::FILE *input)
     tk = scanner(input);
     node_t *nodeB = new node_t;
     nodeB->level = 'B';
-    char currentChar = tk.name.back();
+    char currentChar = '\0';
+    if (!tk.name.empty())
+    {
+        currentChar = tk.name[tk.name.size() - 1];
+    }
     if (currentChar == '"' || currentChar == '\0')
     {
         insert(nodeB, S(tk, input));
@@ -163,7 +171,11 @@ node_t *C(token_t tk, std::FILE *input)
     nodeC->tkID = tokenNames[tk.id];
     nodeC->lineNum = tk.lineNum;
     nodeC->level = 'C';
-    char currentChar = tk.name.back();
+    char currentChar = '\0';
+    if (!tk.name.empty())
+    {
+        currentChar = tk.name[tk.name.size() - 1];
+    }
     if (currentChar == '#')
     {
         tk = scanner(input);
@@ -218,7 +230,11 @@ node_t *D(token_t tk, std::FILE *input)
     nodeD->tkID = tokenNames[tk.id];
     nodeD->lineNum = tk.lineNum;
     nodeD->level = 'D';
-    char currentChar = tk.name.back();
+    char currentChar = '\0';
+    if (!tk.name.empty())
+    {
+        currentChar = tk.name[tk.name.size() - 1];
+    }
     if (currentChar == '$')
     {
         tk = scanner(input);
@@ -260,7 +276,11 @@ node_t *E(token_t tk, std::FILE *input)
     nodeE->tkID = tokenNames[tk.id];
     nodeE->lineNum = tk.lineNum;
     nodeE->level = 'E';
-    char currentChar = tk.name.back();
+    char currentChar = '\0';
+    if (!tk.name.empty())
+    {
+        currentChar = tk.name[tk.name.size() - 1];
+    }
     if (currentChar == 39)
     {
         // If the first argument is strictly greater than the second argument
@@ -318,7 +338,11 @@ node_t *F(token_t tk, std::FILE *input)
     nodeF->tkID = tokenNames[tk.id];
     nodeF->lineNum = tk.lineNum;
     nodeF->level = 'F';
-    char currentChar = tk.name.back();
+    char currentChar = '\0';
+    if (!tk.name.empty())
+    {
+        currentChar = tk.name[tk.name.size() - 1];
+    }
     if (tk.id == t2_tk || tk.id == t3_tk)
     {
         return nodeF;
@@ -374,7 +398,11 @@ node_t *G(token_t tk, std::FILE *input)
     nodeG->tkID = tokenNames[tk.id];
     nodeG->lineNum = tk.lineNum;
     nodeG->level = 'G';
-    char currentChar = tk.name.back();
+    char currentChar = '\0';
+    if (!tk.name.empty())
+    {
+        currentChar = tk.name[tk.name.size() - 1];
+    }
     if (tk.id == t2_tk)
     {
         copyString = tk.name;
